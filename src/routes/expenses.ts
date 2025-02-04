@@ -1,6 +1,7 @@
 import { Hono } from "hono";
+import { AppType } from "..";
 
-export const expensesRoute = new Hono<{ Bindings: CloudflareBindings }>()
+export const expensesRoute = new Hono<AppType>()
   .get("/", (c) => {
     return c.json({ expenses: [] });
   })
