@@ -1,9 +1,14 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { expensesRoute } from "./routes/expenses";
 
-const app = new Hono<{ Bindings: CloudflareBindings }>()
+const app = new Hono<{ Bindings: CloudflareBindings }>();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.get("/", (c) => {
+  return c.json({
+    message: "API is Deployed",
+  });
+});
 
-export default app
+app.route("/expenses", expensesRoute);
+
+export default app;
